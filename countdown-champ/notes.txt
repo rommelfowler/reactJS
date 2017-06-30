@@ -1,0 +1,61 @@
+NOTES:
+
+Adding reactivity for users to interact with the application.
+
+=== State
+Data that is pertinent to the app. It has global and local.
+
+- To Add State
+Create a "constructor( props )".
+Props - refers to inherent data from any parent Component.
+
+* In react state is always an object. This can be any valid JS type.
+
+- Updating the State Dynamically
+Use method called this.setState() by creating a method (i.e. changeDeadline(){}).
+As a rule never mutate/ change state directly.
+
+( => ) This is an annonymous function.
+
+=== Props
+Similar to state, props refers to some data; however, you pass data or state to child
+components from parent Component. See (App.jsx -> <Clock/>)
+
+=== Variables
+const -> use this variable if it doesn't need updating
+let -> use this variable if it does need updating.
+
+=== Life Cycle Methods
+Whenever a Component renders on a screen we refer to those events as mounting onto or from the application.
+React provides special methods called Life Cycle Hook
+
+- Component will Mount hook/ method
+Runs before the Component renders on the application. Finds all the data we need
+before the application runs.
+
+- Component did Mount
+Runs after Component has completely rendered onto the application.
+
+=== Leading 0 helper method
+
+-Leading0 function
+
+=== SUMMARY
+React Components - re-usable and independent pieces of React code that comprise the User Interface.
+
+ES6 importing and exporting - a new syntax for sharing code between separate files.
+Used in cases like `import React from ‘react’`
+
+State - the pertinent data to an application. Each component has its local state
+as long as you declare add the constructor to a Component and declare its state object.
+
+Updating State - When updating state, make sure to never mutate state directly.
+Doing so will lead to fatal errors in your application. Instead, re-declare new
+instances of state arrays or objects and use the setState() function to update state.
+
+Props - similar to state, except this data inherits from parent component specifying
+pieces of state as properties.
+
+LifeCycle Methods - events in React components that trigger in cases such as
+rendering on or off the screen, or during state updates. One example is the `componentDidMount()`
+lifeCycle hook.
