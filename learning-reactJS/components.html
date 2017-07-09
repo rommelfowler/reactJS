@@ -37,22 +37,25 @@ React JS  -->
   </style>
 
   </head>
+
+
+  <!-- NOTE: Component is a reserved word. DO NOT USE!! -->
   <body>
+    <!-- ReactDOM.render feeds date from here -->
     <div id="container"></div>
 
 
     <script type="text/babel">
-      var component = React.createClass ({
-        render() {
+    // This is a COMPONENT
+      var ReactComponent = React.createClass({
+        render: function() {
           return (
             <p>These are Components</p>
-          );
+          )
         }
-      });
-      ReactDOM.render (
-        <component/>,
-        document.querySelector("#container")
-      );
+      })
+    // The COMPONENT feeds data to here
+      ReactDOM.render ( <ReactComponent/>, document.querySelector("#container") )
     </script>
 
 
