@@ -12,7 +12,7 @@ React JS  -->
 <html>
   <head>
     <meta charset="utf-8">
-    <title>React JS Components</title>
+    <title>React JS Properties</title>
     <!-- This is the React Library -->
     <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
@@ -46,16 +46,34 @@ React JS  -->
 
 
     <script type="text/babel">
-    // This is a COMPONENT
+    // All properties has to be in {} with a this.props and you concat a
+    // variable name
       var ReactComponent = React.createClass({
         render: function() {
           return (
-           <a href="properties.html">This is the Components section: Check out Specifying Properties</a>
+          <h1>{this.props.variable}</h1>
           )
         }
       })
-    // The COMPONENT feeds data to here
-      ReactDOM.render ( <ReactComponent/>, document.querySelector("#container") )
+      // This is a button that shows that components can have children
+      var ReactButtonComponent = React.createClass({
+        render: function() {
+          return(
+            <div>
+              <button type={this.props.button_behavior}>{this.props.children}</button>
+            </div>
+          )
+        }
+      })
+    // The COMPONENT feeds data to here, but the properties name go inside the
+    // variable you declared in the component
+      ReactDOM.render (
+        <div>
+        <ReactComponent variable="This is the properties section" />
+        <ReactButtonComponent button_behavior="Submit">Send !</ReactButtonComponent>
+
+        </div>,
+        document.querySelector("#container") )
     </script>
 
 

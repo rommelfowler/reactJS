@@ -1,0 +1,83 @@
+<!-- Learning React is a book by Kirupa. This is a test
+React JS  -->
+
+<!--
+
+      This document uses JS
+      libraries to convert
+      JSX to JS
+
+    -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React JS CSS Styles</title>
+    <!-- This is the React Library -->
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <!-- Babel JS Compiler - this compiles JSX code to JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+  <style media="screen">
+    #container{
+      padding: 50px;
+      background: #eee;
+    }
+
+  </style>
+
+  </head>
+
+
+  <!-- NOTE: Component is a reserved word. DO NOT USE!! -->
+  <body>
+    <!-- ReactDOM.render feeds date from here -->
+    <div id="container"></div>
+
+    <script type="text/babel">
+
+    // This is a componenet
+    var Letter = React.createClass({
+      render: function() {
+      // This is an object for the component. It's function is to create
+      // styling for the return()
+      var LetterStyle = {
+        padding: 10,
+        margin:10,
+        backgroundColor: this.props.bgColor, //This doesn't need {} in object
+        color: "#333",
+        display: "inline-block",
+        fontFamily: "monospace",
+        fontSize: 32,
+        textAlign: "center"
+      }
+
+        return(
+          // LetterStyle is applied on style
+          <div style={LetterStyle}>
+          {this.props.children}
+          </div>
+        )
+      }
+    })
+
+
+    ReactDOM.render(
+      // bgColor was created from this.props.bgColor inside LetterStyle object
+      <div>
+      <Letter bgColor="#ffde33">A</Letter>
+      <Letter bgColor="#ffde99">B</Letter>
+      <Letter bgColor="#ffde88">C</Letter>
+      <Letter bgColor="#ffde77">D</Letter>
+      <Letter bgColor="#ffde66">E</Letter>
+      </div>,
+      document.getElementById('container')
+    )
+
+
+    </script>
+
+
+  </body>
+</html>
