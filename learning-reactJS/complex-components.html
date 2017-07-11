@@ -1,0 +1,101 @@
+<!-- Learning React is a book by Kirupa. This is a test
+React JS  -->
+
+<!--
+
+      This document uses JS
+      libraries to convert
+      JSX to JS
+
+    -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React JS Complex-Components</title>
+    <!-- This is the React Library -->
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <!-- Babel JS Compiler - this compiles JSX code to JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+  <style media="screen">
+    #container{
+      padding: 50px;
+      background: #fff;
+    }
+
+  </style>
+
+  </head>
+
+
+  <!-- NOTE: Component is a reserved word. DO NOT USE!! -->
+  <body>
+    <!-- ReactDOM.render feeds date from here -->
+    <div id="container"></div>
+
+
+    <script type="text/babel">
+    // This is a COMPLEX-COMPONENT
+    var Card = React.createClass({
+      render: function(){
+        var cardStyle = {
+          height:200,
+          width:150,
+          padding: 0,
+          backgroundColor: "#FFF",
+          WebkitFilter: "drop-shadow(0px 0px 5px #666)",
+          filter: "drop-shadow(0px 0px 5px #666)"
+        };//If it's a style object, use {}. DONT forget (;)
+
+        // Place all attribute in all components sections
+        return(
+          <div style={cardStyle}>
+            <Square color={this.props.color}/>
+            <Label color={this.props.color}/>
+          </div>
+        ); //Return needs (;)
+      }
+    });
+    var Square = React.createClass({
+      render: function() {
+        var squareStyle = {
+          height: 150,
+          backgroundColor: this.props.color //This will manipulate the color
+        }
+        return(
+          <div style={squareStyle}>
+          </div>
+
+        );
+      }
+    });
+    var Label = React.createClass({
+      render: function(){
+        var labelStyle = {
+          fontFamily: "sans-serif",
+          fontWeight: "bold",
+          textAlign: "center",
+          padding: 13,
+          margin: 0
+        }
+        return(
+          // Place all attribute in all components sections
+          <p style={labelStyle}>{this.props.color}</p>
+
+        );
+      }
+    });
+
+    // The render is the only one with the actual color attribute code
+    ReactDOM.render(
+      <div>
+        <Card color="#45b321"/>
+      </div>, document.getElementById('container')
+    );
+    </script>
+
+
+  </body>
+</html>
