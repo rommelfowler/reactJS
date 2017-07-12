@@ -12,7 +12,7 @@ React JS  -->
 <html>
   <head>
     <meta charset="utf-8">
-    <title>React JS Components</title>
+    <title>Working With State</title>
     <!-- This is the React Library -->
     <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
@@ -22,40 +22,51 @@ React JS  -->
   <style media="screen">
     #container{
       padding: 50px;
-      background: #eee;
+      background: #fff;
     }
-    #container h1 {
-      font-size: 48px;
-      font-family: sans-serif;
-      color: #0080a8;
-    }
-    #container p, #container a {
-      font-size: 20px;
-      font-family: sans-serif;
-      color: #333;
-    }
+
   </style>
 
   </head>
 
 
+  <!-- NOTE: Component is a reserved word. DO NOT USE!! -->
   <body>
     <!-- ReactDOM.render feeds date from here -->
     <div id="container"></div>
 
 
     <script type="text/babel">
-    // This is a COMPONENT
-    //  @NOTE: Must use Capitals to create components. 
-      var ReactComponent = React.createClass({
-        render: function() {
-          return (
-           <a href="properties.html">This is the Components section: Check out Specifying Properties</a>
-          )
-        }
-      })
-    // The COMPONENT feeds data to here
-      ReactDOM.render ( <ReactComponent/>, document.querySelector("#container") )
+    var LightningCounter = React.createClass({
+      render: function(){
+        return(
+          <h1>Hello</h1>
+        )
+      }
+    });
+    var LightningCounterDisplay = React.createClass({
+      render: function() {
+        var divStyle = {
+          width: 250,
+          textAlign:"center",
+          backgroundColor: "black",
+          padding:40,
+          fontFamily:"sans-serif",
+          color:"#999",
+          borderRadius:10
+        };
+
+        return(
+          <div style={divStyle}>
+            <LightningCounter />
+
+          </div>
+        )
+      }
+    });
+    ReactDOM.render(
+      <LightningCounterDisplay/>, document.getElementById('container')
+    );
     </script>
 
 
