@@ -36,12 +36,24 @@ React JS  -->
 
 
     <script type="text/babel">
-    //  @NOTE: Must use Capitals to create components. 
+    // Practicing STATE
+    // @NOTE: Must use Capitals to create components.
+    // @PACKAGE setInterval -
+    // @PACKAGE-API getInitialState - This method runs just before your component gets mounted,
+    // and it allows you to modify a components state object.
+    // @PACKAGE-API componentDidMount - This mothod gets called just after our component
+    // gets rendered (or mounted as React calls it).
+    // @PACKAGE-API setState - This moethod allows you to update the value of the state object.
     var LightningCounter = React.createClass({
+      getInitialState: function() {
+        return{
+          strikes:0
+        };
+      },
       render: function(){
         return(
-          <h1>Hello</h1>
-        )
+          <h1>{this.state.strikes}</h1>
+        );
       }
     });
     var LightningCounterDisplay = React.createClass({
@@ -59,7 +71,6 @@ React JS  -->
         return(
           <div style={divStyle}>
             <LightningCounter />
-
           </div>
         )
       }
