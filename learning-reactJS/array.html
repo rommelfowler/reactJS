@@ -1,0 +1,98 @@
+<!-- Learning React is a book by Kirupa. This is a test
+React JS  -->
+
+<!--
+
+      This document uses JS
+      libraries to convert
+      JSX to JS
+
+    -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Arrays</title>
+    <!-- This is the React Library -->
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <!-- Babel JS Compiler - this compiles JSX code to JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+  <style media="screen">
+    #container{
+      padding: 50px;
+      background: #FFF;
+    }
+  </style>
+
+  </head>
+  <body>
+    <div id="container"></div>
+
+
+<script type="text/babel">
+// Variable container
+var container = document.getElementById('container');
+
+/* ============================================
+Circle component
+@package - This holds circle style and returns that style
+@note    - Component of Circle. Must add (;) for render and return
+============================================== */
+  var Circle = React.createClass({
+    render: function(){
+      var circleStyle = {
+        padding: 10,
+        margin: 20,
+        display:"inline-block",
+        backgroundColor: this.props.bgColor,
+        borderRadius: "50%",
+        width: 100,
+        height: 100,
+      };
+
+      return(
+        <div style={circleStyle}></div>
+      )
+    }
+  });
+/* ======================================================
+ This is an Array of colors.
+ Arrays use [] with a (;) at the end
+ ====================================================== */
+var colorsArray = ["#333", "#E94F37", "#1CB9BF", "#85FFC7", "#297373", "#DDD",
+                  "#85AFC7", "#297433", "#A40E4C"];
+
+// Empty variable that holds the render data for the colorsArray
+var renderData = [];
+
+/* ======================================================
+@package - Counter that iterates colors length and push's
+           the data into renderData variable
+====================================================== */
+for (var i = 0; i < colorsArray.length; ++i){
+  {/* =====================================
+    @key -  On each component, we specify our "key prop" and set its value to a
+            combination of color and index position inside the colorsArray.
+            Key prop's values React uses to uniquely identify each particular
+            component.
+    @push - pushes renderData=[] into Circle component
+    @NOTE - this ensures that each component gets a unique identifier
+    ===================================== */}
+  var color = colorsArray[i];
+  renderData.push( <Circle key={ i + color } bgColor={ color }/> );
+} // End of for loop
+
+  ReactDOM.render(
+    <div>
+    {/* If calling variable, you must call it inside a {} */}
+    {renderData}
+    </div>,
+    container
+  );
+</script>
+
+
+  </body>
+</html>

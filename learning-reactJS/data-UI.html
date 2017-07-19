@@ -1,0 +1,95 @@
+<!-- Learning React is a book by Kirupa. This is a test
+React JS  -->
+
+<!--
+
+      This document uses JS
+      libraries to convert
+      JSX to JS
+
+    -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Data to UI</title>
+    <!-- This is the React Library -->
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <!-- Babel JS Compiler - this compiles JSX code to JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+  <style media="screen">
+    #container{
+      padding: 50px;
+      background: #FFF;
+    }
+
+  </style>
+
+  </head>
+  <body>
+    <div id="container"></div>
+
+<!-- Data to User-Interface tutorial. Using variables, arrays and function -->
+
+<script type="text/babel">
+/* ============================================
+Circle component
+@package - this holds circle style and returns that style
+============================================== */
+  var Circle = React.createClass({
+    render: function(){
+      var circleStyle = {
+        padding: 10,
+        margin: 20,
+        display:"inline-block",
+        backgroundColor: this.props.bgColor,
+        borderRadius: "50%",
+        width: 100,
+        height: 100,
+      };
+
+      return(
+        <div style={circleStyle}></div>
+      )
+    }
+  });
+
+  /* ============================================
+   Function variable for show circle.
+   This returns a randomly chosen color
+  ============================================== */
+  function showCircle() {
+    var colors = ["#393BA1", "#E94F37", "#1CB9BF", "#A1D363"];
+    var ran = Math.floor(Math.random() * colors.length);
+
+    // return a Circle with a randomly chosen color
+    return <Circle bgColor={colors[ran]}/>;
+  }
+
+
+  // Variable the hodls the container div
+  var container = document.getElementById('container');
+  // Component can be placed inside a variable
+  var theCircle = <Circle bgColor="#F9C240"/>
+
+  ReactDOM.render(
+    <div>
+
+      {/*This is the showCircle function call */}
+      {showCircle()}
+      {showCircle()}
+      {showCircle()}
+
+      {/* variable the holds the Circle component*/}
+      {theCircle}
+
+    </div>,
+    container
+  );
+</script>
+
+
+  </body>
+</html>
