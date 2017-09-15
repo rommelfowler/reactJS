@@ -72,6 +72,19 @@ when clicked.
           count:0
         };
       },
+      increase: function(NUMBER){
+        // variable that holds the component counter
+        var thisCounter = this.state.count;
+        // if statement that uses synthetic events
+        if (NUMBER.shiftKey) {
+          thisCounter += 10;
+        } else {
+          thisCounter += 1;
+        }
+        this.setState({
+          count: thisCounter
+        });
+      },
       render: function() {
         var backgroundStyle = {
           padding:50,
@@ -96,7 +109,7 @@ when clicked.
             {/*Counter Component - count is being called in getInitialState
               function */}
             <Counter display={this.state.count}/>
-            <button style={buttonStyle}>+</button>
+            <button onClick={this.increase} style={buttonStyle}>+</button>
           </div>
         );
       },
