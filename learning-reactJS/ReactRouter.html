@@ -1,0 +1,83 @@
+<!-- Learning React is a book by Kirupa. This is a test
+React JS  -->
+
+<!--
+
+      This document uses JS
+      libraries to convert
+      JSX to JS
+
+    -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Router</title>
+    <!-- This is the React Library -->
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <!-- Babel JS Compiler - this compiles JSX code to JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <!-- React Router App -->
+    <script src="https://npmcdn.com/react-router@3.0.2/umd/ReactRouter.min.js"></script>
+  <style media="screen">
+
+
+  </style>
+  </head>
+
+
+  <body>
+    <!-- render html -->
+    <div id="container"></div>
+
+<!-- Data to User-Interface tutorial. Using variables, arrays and function -->
+
+
+  <script type="text/babel">
+  /* ============================================
+  React Touter (reference)
+  @package - Simple Page Application (SPA) - pages (aka views) are typically loaded inline
+  ============================================== */
+      var destination = document.querySelector("#container");
+
+      var { Router,
+        Route,
+        IndexRoute,
+        IndexLink,
+        hashHistory,
+        Link } = ReactRouter;
+
+      var App = React.createClass({
+        render: function() {
+          return (
+            <div>
+              <h1>Simple SPA</h1>
+              <ul className="header">
+        			  <li>Home</li>
+        			  <li>Stuff</li>
+        			  <li>Contact</li>
+              </ul>
+              <div className="content">
+              </div>
+            </div>
+          )
+        }
+      });
+
+
+
+
+      ReactDOM.render(
+        <Router history={hashHistory}>
+          <Route path="/" component={App}>
+
+          </Route>
+        </Router>,
+        destination
+      );
+    </script>
+
+
+  </body>
+</html>
