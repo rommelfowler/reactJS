@@ -1,0 +1,92 @@
+<!-- Learning React is a book by Kirupa. This is a test
+React JS  -->
+
+<!--
+
+      This document uses JS
+      libraries to convert
+      JSX to JS
+
+    -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Working with refs</title>
+    <!-- This is the React Library -->
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <!-- Babel JS Compiler - this compiles JSX code to JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+  <style media="screen">
+    #container{
+      padding: 50px;
+      background: #FFF;
+    }
+
+  </style>
+  </head>
+
+
+  <body>
+    <!-- render html -->
+    <div id="container"></div>
+
+<!-- Data to User-Interface tutorial. Using variables, arrays and function -->
+
+<script type="text/babel">
+/* ============================================
+Refs (reference)
+@package - this references the DOM
+============================================== */
+  var Color = React.createClass ({
+    getInitialState: function(){
+      return{
+        color: '',
+        bgColor: ''
+      }
+    },
+    colorValue: function(e){
+      this.setState({color:e.target.value});
+      this._input.value = "";
+      this._input.focus();
+      e.preventDefault();
+    },
+    render: function(){
+      var squareStyle = {
+        backgroundColor: this.state.bgColor
+      };
+      var self = this;
+
+    return (
+      <div className="colorArea">
+        <div style={squareSytle} className="colorSquare">
+
+          <form onSubmit={this.setNewColor}>
+            <input
+              ref ={
+                function(el){
+                  self._input = el;
+                  // ES6 method that outputs the same
+                  // ref={ (el) => this._input = el}
+                }
+              }
+              onChange={this.colorValue}
+              paceholder="color value">
+            </input>
+            <button type="submit">go</button>
+          </form>
+        </div>
+      </div>
+    );
+    }
+
+  });
+
+
+</script>
+
+
+  </body>
+</html>
