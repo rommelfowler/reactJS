@@ -35,7 +35,7 @@ React JS  -->
     margin: 0;
   }
   ul.header{
-    background-color: :#111;
+    background-color: #111;
     padding:0;
   }
   ul.header li a {
@@ -56,6 +56,9 @@ React JS  -->
   .content li {
     margin-bottom: 11px;
   }
+  .active {
+    background-color: #0099FF;
+  }
   </style>
   </head>
 
@@ -69,7 +72,7 @@ React JS  -->
 
   <script type="text/babel">
   /* ============================================
-  React Touter (reference)
+  React Router (reference)
   @package - Simple Page Application (SPA) - pages (aka views) are typically loaded inline
   ============================================== */
       var destination = document.querySelector("#container");
@@ -88,16 +91,16 @@ React JS  -->
             <div>
               <h1>Simple SPA</h1>
               <ul className="header">
-        			  <li><Link to="/">Home</Link></li>
-        			  <li><Link to="/stuff">Stuff</Link></li>
-        			  <li><Link to="/contact">Contact</Link></li>
+        			  <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+        			  <li><Link to="/stuff" activeClassName="active">Stuff</Link></li>
+        			  <li><Link to="/contact" activeClassName="active">Contact</Link></li>
               </ul>
 
               <div className="content">
                 {this.props.children}
               </div>
             </div>
-          )
+          );
         }
       });
      var Home = React.createClass({
@@ -117,14 +120,41 @@ React JS  -->
          );
        }
      });
-
-
+     var Contact = React.createClass({
+       render: function() {
+         return(
+           <div>
+             <h1>Got Questions? </h1>
+             <p>The easiest thing to do is post on our <a href="http://forum.kirupa.com">forums</a></p>
+           </div>
+         );
+       }
+     });
+     var Stuff = React.createClass({
+       render: function() {
+         return(
+           <div>
+             <h2>Stuff</h2>
+             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </p>
+             <ol>
+               <li>item</li>
+               <li>item</li>
+               <li>item</li>
+               <li>item</li>
+             </ol>
+           </div>
+         );
+       }
+     });
 
       ReactDOM.render(
         // ReactRouter is prefixed in a variable, which is why it's not included in Router & Route
         <Router history={hashHistory}>
           <Route path="/" component={RouterApp}>
             <IndexRoute component={Home}/>
+            <Route path="stuff" component={Stuff}/>
+            <Route path="contact" component={Contact}/>
+
           </Route>
         </Router>,
         destination
