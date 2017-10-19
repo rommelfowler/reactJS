@@ -63,12 +63,30 @@ React JS  -->
       var destination = document.querySelector("#container");
       // ES6 trick that you can do to manually specify which values will get prefixed.
   var TodoList = React.createClass({
+    getInitialState: function() {
+      return{
+        items:[]
+      };
+    },
+    addItem: function(e) {
+      var itemArray = this.state.items;
+
+      itemArray.push({
+        text: this._inputElement.value,
+        key:Date.now()
+      });
+      this.setState({
+        items: itemArray
+      });
+      e.preventDefault();
+    },
     render: function() {
       return(
         <div className="todoListMain">
           <div className="header">
-            <form>
-              <input type="text" placeholder="enter task"></input>
+            <form onSubmit={this.addItem}>
+            {/* ref's _inputElement property will store a reference to the generated input element.*/}
+              <input ref={(a)=>this._inputElement = a} type="text" placeholder="enter task"></input>
               <button type="submit">add</button>
             </form>
           </div>
