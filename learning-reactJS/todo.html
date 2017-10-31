@@ -75,11 +75,13 @@ React JS  -->
         text: this._inputElement.value,
         key:Date.now()
       });
+
       this.setState({
         items: itemArray
       });
       e.preventDefault();
     },
+
     render: function() {
       return(
         <div className="todoListMain">
@@ -101,7 +103,7 @@ React JS  -->
       // This holds the props entries in the return
       var todoEntries = this.props.entries;
 
-      function() createTasks(item){
+      function createTasks(item){
         {/* item.key value comes from itemArray.push function */}
         return <li key={item.key}>{item.key}</li>
       }
@@ -110,15 +112,19 @@ React JS  -->
       var listItems = todoEntries.map(createTasks);
 
       return(
-        <div className="todoListMain">
-          <div className="header">
-            <form onSubmit={this.addItem}>
-            <input ref={(a)=>this._inputElement=a} placeholder="enter task">
-            </input>
-            </form>
-          </div>
-          <TodoItems entries={this.state.items}/>
-        </div>
+        <ul className="theList">
+          {listItems}
+        </ul>
+        // ======= ORIGINAL HTML ========= //
+        // <div className="todoListMain">
+        //   <div className="header">
+        //     <form onSubmit={this.addItem}>
+        //     <input ref={(a)=>this._inputElement=a} placeholder="enter task">
+        //     </input>
+        //     </form>
+        //   </div>
+        //   <TodoItems entries={this.state.items}/>
+        // </div>
       );
     }
   });
