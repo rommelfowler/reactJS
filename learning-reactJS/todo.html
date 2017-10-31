@@ -26,7 +26,7 @@ React JS  -->
       font-family: sans-serif;
     }
     .todoListMain .header input {
-      padding: 10px;
+      padding: 10px;x
       font-size: 16px;
       border: 2px solid #FFF;
     }
@@ -98,14 +98,17 @@ React JS  -->
   var TodoItems = React.createClass({
 
     render: function(){
+      // This holds the props entries in the return
       var todoEntries = this.props.entries;
 
       function() createTasks(item){
+        {/* item.key value comes from itemArray.push function */}
         return <li key={item.key}>{item.key}</li>
       }
-
+      // map funciton iterates items inside todoEntries variable, then calls
+      // createTasks function to create a list of elements for each item
       var listItems = todoEntries.map(createTasks);
-      
+
       return(
         <div className="todoListMain">
           <div className="header">
