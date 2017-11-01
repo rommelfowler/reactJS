@@ -43,6 +43,19 @@ React JS  -->
       border 2px solid #003399;
       cursor: pointer;
     }
+    .todoListMain .theList {
+      list-style: none;
+      padding-left:0;
+      width: 255px;
+    }
+    .todoListMain .theList li {
+      color:#333;
+      background-color: rgba(255,255,255, .5);
+      padding:15px;
+      margin-bottom:15px;
+      border-radius:5px;
+    }
+
   </style>
   </head>
 
@@ -79,6 +92,7 @@ React JS  -->
       this.setState({
         items: itemArray
       });
+      this._inputElement.value="";
       e.preventDefault();
     },
 
@@ -88,10 +102,13 @@ React JS  -->
           <div className="header">
             <form onSubmit={this.addItem}>
             {/* ref's _inputElement property will store a reference to the generated input element.*/}
-              <input ref={(a)=>this._inputElement = a} type="text" placeholder="enter task"></input>
+              <input ref={(a)=>this._inputElement = a}
+                placeholder="enter task">
+              </input>
               <button type="submit">add</button>
             </form>
           </div>
+          <TodoItems entries={this.state.items}/>
         </div>
       );
     }
@@ -105,7 +122,7 @@ React JS  -->
 
       function createTasks(item){
         {/* item.key value comes from itemArray.push function */}
-        return <li key={item.key}>{item.key}</li>
+        return <li key={item.key}>{item.text}</li>
       }
       // map funciton iterates items inside todoEntries variable, then calls
       // createTasks function to create a list of elements for each item
