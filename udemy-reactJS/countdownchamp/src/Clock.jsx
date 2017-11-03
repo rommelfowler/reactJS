@@ -13,6 +13,11 @@ class Clock extends Component {
       seconds: 0
     }
   }
+  // Life cycle hook - componentWillMount()
+  componentWillMount() {
+    this.getTimeUntil(this.props.deadline);
+  }
+
   getTimeUntil(deadline){
     // console.log('%cgetTimeUntil() object in Clock.jsx', 'color:#ea8181')
     const time = Date.parse(deadline) - Date.parse( new Date() );
@@ -26,10 +31,19 @@ class Clock extends Component {
     // console.log('%cminutes: ', 'color:#ea8181', minutes);
     // console.log('%chours: ', 'color:#ea8181', hours);
     // console.log('%cdays: ', 'color:#ea8181', days);
+
+    this.setState(
+      {
+        days,
+        hours,
+        minutes,
+        seconds
+      }
+    )
   }
 
   render() {
-    this.getTimeUntil(this.props.deadline);
+    // this.getTimeUntil(this.props.deadline);
     return(
       <div>
         <div className="Clock-days">{this.state.days} Days</div>
