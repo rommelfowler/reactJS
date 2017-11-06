@@ -1,49 +1,24 @@
 import React, {Component} from 'react';
 import './App.css';
 
-// console.log('%cYou\'re checking the Clock Component called Clock.jsx: ', 'background:#ea8181; color:whitesmoke; font-size:12px; padding:5px;');
 
+// @package Component - can only hold one div per component class
 class Clock extends Component {
   constructor(props){
     super(props);
+
     this.state = {
       days: 0,
       hours: 0,
       minutes: 0,
       seconds: 0
     }
-  }
-  // Life cycle hook - componentWillMount()
-  componentWillMount() {
-    this.getTimeUntil(this.props.deadline);
+    console.log('%cthis.props','background:#333;color:#fff;padding:2px', this.props)
   }
 
-  getTimeUntil(deadline){
-    // console.log('%cgetTimeUntil() object in Clock.jsx', 'color:#ea8181')
-    const time = Date.parse(deadline) - Date.parse( new Date() );
-    // console.log('%ctime: ', 'color:#ea8181', time)
-
-    const seconds = Math.floor((time/1000)%60);
-    const minutes = Math.floor((time/1000/60)%60);
-    const hours = Math.floor((time/1000*60*60)%24);
-    const days = Math.floor(time/(1000*60*60*24));
-    // console.log('%cseconds: ', 'color:#ea8181', seconds);
-    // console.log('%cminutes: ', 'color:#ea8181', minutes);
-    // console.log('%chours: ', 'color:#ea8181', hours);
-    // console.log('%cdays: ', 'color:#ea8181', days);
-
-    this.setState(
-      {
-        days,
-        hours,
-        minutes,
-        seconds
-      }
-    )
-  }
-
-  render() {
-    // this.getTimeUntil(this.props.deadline);
+  // @package props - refers to some data within the application; however, you pass
+  // data/state from child => parent
+  render(){
     return(
       <div>
         <div className="Clock-days">{this.state.days} Days</div>
@@ -51,7 +26,8 @@ class Clock extends Component {
         <div className="Clock-minutes">{this.state.minutes} Minutes</div>
         <div className="Clock-seconds">{this.state.seconds} Seconds</div>
       </div>
-    );
+    )
   }
 }
+
 export default Clock;

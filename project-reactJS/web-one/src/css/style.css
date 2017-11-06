@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+}
+.Header {
+  background: black;
+  color: white;
+  height: 100px;
+
+}
+.Header p {
+  text-align: center;
+}
