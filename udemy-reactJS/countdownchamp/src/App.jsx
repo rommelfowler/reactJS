@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Form, FormControl, Button} from 'react-bootstrap';
 import Clock from './Clock';
 import "./App.css"
 // ES6 allows us to extend components from react
@@ -34,18 +35,19 @@ class App extends Component {
           <Clock
             deadline={this.state.deadline}
           />
-        <div>
+        <Form inline>
           {/* @package onChange function changes the newDeadline - in constructor() -
             to the target value of what is typed*/}
-          <input
+          <FormControl
+            className="Deadline-input"
             placeholder="new date"
             onChange={event => this.setState({newDeadline: event.target.value})}
 
           />
           {/* onClick uses ()=> annonymous function to call changeDealine function*/}
 
-          <button onClick={()=> this.changeDeadline()}>Submit</button>
-        </div>
+          <Button onClick={()=> this.changeDeadline()}>Submit</Button>
+        </Form>
       </div>
     )
   }
