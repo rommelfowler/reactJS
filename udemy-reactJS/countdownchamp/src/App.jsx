@@ -42,7 +42,6 @@ class App extends Component {
             className="Deadline-input"
             placeholder="new date"
             onChange={event => this.setState({newDeadline: event.target.value})}
-
           />
           {/* onClick uses ()=> annonymous function to call changeDealine function*/}
 
