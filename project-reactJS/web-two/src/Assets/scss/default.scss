@@ -1,0 +1,24 @@
+@import "_config.scss";
+@import "_App.scss";
+
+header {
+  position: relative;
+
+  .logo, nav {
+    margin-top: 10px;
+  }
+
+  .logo {
+    position: absolute;
+    left: 20px;
+  }
+  nav {
+    position: absolute;
+    right: 20px;
+
+    ul li {
+      display: inline-flex;
+      margin: auto 10px;
+    }
+  }
+}
