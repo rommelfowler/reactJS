@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
+import Profile from './profile';
+
 import './App.css';
 import {FormGroup, FormControl, InputGroup, Glyphicon} from 'react-bootstrap';
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      query : ''
-
+      query : '',
+      artist : null
     }
   }
   search(){
@@ -17,9 +19,11 @@ class App extends Component {
     fetch(FETCH_URL, {
       method: 'GET'
     })
-    .then(response => {
-      const json = response.json();
-      console.log('json', json);
+    .then(response => response.json())
+    .then(json => {
+        const artist = json.artists.items[0];
+        console.log('artist', artist);
+        this.setState({artist});
     })
   }
 
@@ -48,10 +52,9 @@ class App extends Component {
           </InputGroup>
 
         </FormGroup>
-        <div className="Profile">
-          <div>Aritst Picture</div>
-          <div>Artist Name</div>
-        </div>
+        <Profile
+          artist={this.state.artist}
+        />
         <div className="Gallery">
           Gallery
         </div>
