@@ -1,0 +1,11 @@
+{
+  "name": "starter-file",
+  "version": "0.0.1",
+  "description": "starter file for lecture",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rommel fowler <info@rommelfowler.com>",
+  "license": "ISC"
+}

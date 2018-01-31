@@ -1,0 +1,16 @@
+{
+  "name": "001-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Rommel Fowler <info@rommelfowler.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^1.15.0",
+    "webpack-dev-server": "^1.16.5"
+  }
+}
