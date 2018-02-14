@@ -8,18 +8,18 @@ import Nav from "./nav";
 export default class App extends Component {
   constructor(props){
     super(props);
-    // this.state = {section: location.hash}
+    this.state = {section: window.location.hash} // add window to location because there's no local vars
 
     this.map = new Map(); // enables you to connect different objects/ strings, etc. with key&value
     this.map.set('footer',Footer); //this maps footer and links it to Footer class.
 
     this.onLinkClick = this.onLinkClick.bind(this); //binds this event to onLinkClick()
 
-    // window.onhashchange = (e) => {
-    //   if(this.mpa.has(location.hash)){
-    //     this.setState({section:location.hash});
-    //   }
-    // }
+    window.onhashchange = (e) => {
+      if(this.map.has(window.location.hash)){
+        this.setState({section:window.location.hash});
+      }
+    }
   }
   onLinkClick(e) {
     // e.preventDefault();
@@ -41,10 +41,16 @@ export default class App extends Component {
         let test = children.push(<View key={key} data={this.props.data[key].model}/>);
         console.log(test);
         if (label) {
+          this.map.set("#"+key,View);
+          this.map.set("#"+key,model);
           navModel.push({link:"#"+key, name:label});
           console.log(navModel);
         }
       }
+    }
+    if(this.map.has(this.state.action)){
+      const Tag = this.map.get(this.state.action);
+      children = [<Tag key={this.state.section} data={this.map.get(Tag)}/>];
     }
     return(
       <div>
